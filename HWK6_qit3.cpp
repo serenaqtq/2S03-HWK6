@@ -33,58 +33,21 @@ int main() {
 }
 
 bool errorChecking(string temp) {
-	return checkAdd(temp) && checkSub(temp) && checkMul(temp) && checkDiv(temp)
-			&& checkBrackets(temp);
+	return checkExpr(temp) && checkBrackets(temp);
 }
 
-bool checkAdd(string temp) {
+bool checkExpr(string temp){
 	bool check = true;
 	for (int i = 0; i < temp.length() - 1; i++) {
-		if (temp.at(i) == "+") {
-			if (temp.at(i + 1) == "+" || temp.at(i + 1) == "-"
-					|| temp.at(i + 1) == "*" || temp.at(i + 1) == "/") {
+		if (temp.at(i) == "+" || temp.at(i) == "-" || temp.at(i) == "*" || temp.at(i) == "/") {
+			if (temp.at(i + 1) > "9" || temp.at(i + 1) < "0") {
 				check = false;
 			}
 		}
 	}
-	return check;
-}
-
-bool checkSub(string temp) {
-	bool check = true;
-	for (int i = 0; i < temp.length() - 1; i++) {
-		if (temp.at(i) == "-") {
-			if (temp.at(i + 1) == "+" || temp.at(i + 1) == "-"
-					|| temp.at(i + 1) == "*" || temp.at(i + 1) == "/") {
-				check = false;
-			}
-		}
-	}
-	return check;
-}
-
-bool checkMul(string temp) {
-	bool check = true;
-	for (int i = 0; i < temp.length() - 1; i++) {
-		if (temp.at(i) == "*") {
-			if (temp.at(i + 1) == "+" || temp.at(i + 1) == "-"
-					|| temp.at(i + 1) == "*" || temp.at(i + 1) == "/") {
-				check = false;
-			}
-		}
-	}
-	return check;
-}
-
-bool checkDiv(string temp) {
-	bool check = true;
-	for (int i = 0; i < temp.length() - 1; i++) {
-		if (temp.at(i) == "*") {
-			if (temp.at(i + 1) == "+" || temp.at(i + 1) == "-"
-					|| temp.at(i + 1) == "*" || temp.at(i + 1) == "/") {
-				check = false;
-			}
-		}
+	if (temp.at(temp.length() - 1) == "+" || temp.at(temp.length() - 1) == "-" || temp.at(temp.length() - 1) == "*"
+			|| temp.at(temp.length() - 1) == "/") {
+		check = false;
 	}
 	return check;
 }
