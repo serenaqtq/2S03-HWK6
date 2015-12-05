@@ -57,8 +57,7 @@ bool checkExpr(string &temp){
 			|| temp[len - 1] == '/' || temp[len - 1] == '(') {
 		check = false;
 	}
-	if (temp[0] == '+' || temp[0] == '-' || temp[0] == '*'
-				|| temp[0] == '/' || temp[0] == ')') {
+	if (temp[0] == '+' || temp[0] == '-' || temp[0] == '*'|| temp[0] == '/' || temp[0] == ')') {
 			check = false;
 		}
 
@@ -71,11 +70,11 @@ bool checkExpr(string &temp){
 void trimBrackets(string &str) {
 	int len = str.length();
 	for (int i = 0; i < len - 1; i++) {
-		if (str[i] == '(' && str[i] == '(') {
-			str.erase(str.at(i + 1));
+		if (str[i] == '(' && str[i + 1] == '(') {
+			str.erase(str.begin()+ (i + 1));
 		}
-		if (str[i] == ')' && str[i] == ')') {
-			str.erase(str.at(i + 1));
+		if (str[i] == ')' && str[i + 1] == ')') {
+			str.erase(str.begin()+ (i + 1));
 		}
 	}
 }
@@ -90,22 +89,19 @@ int main() {
 		string input;
 		cout << "Please enter an expression: ";
 		getline(cin, input);
+        if (input == "#") {
+			break;
+		}
 		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-		cout << input << endl;
 		trimBrackets(input);
 		cout << input << endl;
-		if (input == "#") {
-			break;
-		} else {
-			cout << "Please enter an expression: ";
-			cin >> input;
-			bool check = errorChecking(input);
-			if (!check) {
-				cout << "Expression is not well formed" << endl;
-			} else {
+		bool check = errorChecking(input);
+        if (!check) {
+            cout << "Expression is not well formed" << endl;
+        } else {
 				//calculator will run
-			}
-		}
+        }
+
 	}
 	return 0;
 }
