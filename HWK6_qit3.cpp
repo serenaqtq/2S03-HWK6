@@ -11,13 +11,89 @@
 #include <algorithm>
 using std::string;
 using namespace std;
+bool checkBrackets(string &temp) {
+	int sum = 0;
+	int sumL = 0;
+	int sumR = 0;
+	bool check = true;
+	int len = temp.length();
+	for (int i = 0; i < len; i++) {
+		if (temp[i] == '(') {
+			sum++;
+			sumL++;
+			if (i != len - 1) {
+				if (temp[i + 1] == '+' || temp[i + 1] == '*' ||
+						temp[i + 1] == '/') {
+					check = false;}
+			}
+		}
+		if (temp[i] == ')') {
+			sum++;
+			sumR++;
+			if (i != len) {
+				if (temp[len - 1] == ')') {check = false;}
+			}
+		}
+	}
+	if (sum % 2 != 0) {
+		check = false;
+	} else if (sumL != sumR){
+		check = false;
+	}
+	return check;
+}
+bool checkExpr(string &temp){
+	bool check = true;
+	int len = temp.length();
+	for (int i = 0; i < len - 1; i++) {
+		if (temp[i] == '+' ||temp[i] == '-' || temp[i] == '*' || temp[i] == '/') {
+			if (temp[i + 1] == ')' || temp[i + 1] == '+' || temp[i + 1] == '-'
+					|| temp[i + 1] == '*' || temp[i + 1] == '/') {
+				check = false;
+			}
+		}
+	}
+	if (temp[len - 1] == '+' || temp[len - 1] == '-' || temp[len - 1] == '*'
+			|| temp[len - 1] == '/' || temp[len - 1] == '(') {
+		check = false;
+	}
+	if (temp[0] == '+' || temp[0] == '-' || temp[0] == '*'
+				|| temp[0] == '/' || temp[0] == ')') {
+			check = false;
+		}
+
+
+	return check;
+}
+
+
+
+void trimBrackets(string &str) {
+	int len = str.length();
+	for (int i = 0; i < len - 1; i++) {
+		if (str[i] == '(' && str[i] == '(') {
+			str.erase(str.at(i + 1));
+		}
+		if (str[i] == ')' && str[i] == ')') {
+			str.erase(str.at(i + 1));
+		}
+	}
+}
+bool errorChecking(string &temp) {
+	return checkExpr(temp) && checkBrackets(temp);
+}
+
+
 
 int main() {
 	while (true) {
 		string input;
 		cout << "Please enter an expression: ";
-		cin >> input;
+		getline(cin, input);
 		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
+		cout << input << endl;
+		trimBrackets(input);
+		cout << input << endl;
 		if (input == "#") {
 			break;
 		} else {
@@ -34,59 +110,3 @@ int main() {
 	return 0;
 }
 
-bool errorChecking(string &temp) {
-	return checkExpr(temp) && checkBrackets(temp);
-}
-
-bool checkExpr(string &temp){
-	bool check = true;
-	for (int i = 0; i < temp.length() - 1; i++) {
-		if (temp.at(i) == "+" || temp.at(i) == "-" || temp.at(i) == "*" || temp.at(i) == "/") {
-			if (temp.at(i + 1) == ")" || temp.at(i + 1) == "+" || temp.at(i + 1) == "-"
-					|| temp.at(i + 1) == "*" || temp.at(i + 1) == "/") {
-				check = false;
-			}
-		}
-	}
-	if (temp.at(temp.length() - 1) == "+" || temp.at(temp.length() - 1) == "-" || temp.at(temp.length() - 1) == "*"
-			|| temp.at(temp.length() - 1) == "/" || temp.at(temp.length() - 1) == "(") {
-		check = false;
-	}
-	if (temp.at(0) == "+" || temp.at(0) == "-" || temp.at(0) == "*"
-				|| temp.at(0) == "/" || temp.at(0) == ")") {
-			check = false;
-		}
-
-
-	return check;
-}
-
-bool checkBrackets(string &temp) {
-	int sum = 0;
-	int sumL = 0;
-	int sumR = 0;
-	bool check = true;
-	for (int i = 0; i < temp.length(); i++) {
-		if (temp.at(i) == "(") {
-			sum++;
-			sumL++;
-			if (i != temp.length() - 1) {
-				if (temp.at(i + 1) == "+" || temp.at(i + 1) == "*" ||
-						temp.at(i + 1) == "/") {check = false;}
-			}
-		}
-		if (temp.at(i) == ")") {
-			sum++;
-			sumR++;
-			if (i != temp.length() - 1) {
-				if (temp.at(i + 1) == "(") {check = false;}
-			}
-		}
-	}
-	if (sum % 2 != 0) {
-		check = false;
-	} else if (sumL != sumR){
-		check = false;
-	}
-	return check;
-}

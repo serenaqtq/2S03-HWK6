@@ -12,7 +12,7 @@
 
 class ArithmeticExpression: public Expression {
 public:
-	ArithmeticExpression(string &str);
+	ArithmeticExpression(string &tempInput, string &tempType);
 	virtual ~ArithmeticExpression();
 	string evaluate();
 	void print();
@@ -21,6 +21,7 @@ protected:
 	Expression *left;
 	Expression *right;
 	string type;
+	string input;
 };
 
 #endif /* ARITHMETICEXPRESSION_H_ */

@@ -8,9 +8,11 @@
 #include "ArithmeticExpression.h"
 #include <stdlib.h>
 
-ArithmeticExpression::ArithmeticExpression() {
-
-
+ArithmeticExpression::ArithmeticExpression(string &tempInput, string &tempType) {
+	input = tempInput;
+	type = tempType;
+	left = 0;
+	right = 0;
 }
 
 ArithmeticExpression::~ArithmeticExpression() {
