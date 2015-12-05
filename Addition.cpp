@@ -24,7 +24,7 @@ string Addition::evalute(){
 }
 
 void Addition:: print(){
-	cout << ")" << left << "+" << right << ")" <<output;
+	cout << "(" << left << "+" << right << ")" << "=" <<output;
 }
 
 
