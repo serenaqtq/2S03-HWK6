@@ -6,13 +6,27 @@
  */
 
 #include "ArithmeticExpression.h"
+#include <stdlib.h>
 
 ArithmeticExpression::ArithmeticExpression() {
-	// TODO Auto-generated constructor stub
+
 
 }
 
 ArithmeticExpression::~ArithmeticExpression() {
-	// TODO Auto-generated destructor stub
+	delete left;
+	delete right;
+}
+
+void ArithmeticExpression::print(){
+
+}
+
+float ArithmeticExpression::convert(string &str){
+	return atof(str.c_str());
+}
+
+string ArithmeticExpression::evaluate(){
+
 }
 

@@ -12,14 +12,15 @@
 
 class ArithmeticExpression: public Expression {
 public:
-	ArithmeticExpression();
+	ArithmeticExpression(string &str);
 	virtual ~ArithmeticExpression();
 	string evaluate();
 	void print();
-	float convert(string s);
+	float convert(string &str);
 protected:
 	Expression *left;
 	Expression *right;
+	string type;
 };
 
 #endif /* ARITHMETICEXPRESSION_H_ */
