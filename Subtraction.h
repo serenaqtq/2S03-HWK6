@@ -17,6 +17,7 @@ public:
 	Subtraction();
 	~Subtraction();
 	string evalute();
+	string evalute(Expression*, Expression*);
 	void print();
 };
 

@@ -17,13 +17,13 @@ Subtraction:: ~Subtraction(){
 
 }
 
-string Subtraction::evalute(){
+string Subtraction::evalute(Expression* left, Expression* right)){
 	//int output = left - right;
-	return "";//to_string(output);
+	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) - static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	return 	std::to_string(output);
 }
 
 void  Subtraction:: print(){
-	cout << ")" << left << "-" << right << ")";
+	cout << ")" << left << "-" << right << ")"  ;
 }
 
 

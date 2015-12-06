@@ -17,6 +17,7 @@ public:
 	Addition();
 	~Addition();
 	string evalute();
+	string evalute(Expression*, Expression*);
 	void print();
 };
 

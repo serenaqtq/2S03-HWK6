@@ -10,12 +10,14 @@
 #include<string>
 #include "ArithmeticExpression.h"
 using std::string;
+using namespace std;
 
 class Division: public ArithmeticExpression {
 public:
 	Division();
 	~Division();
-	string evaluate();
+	string evalute();
+	string evalute(Expression* left, Expression* right);
 	void print();
 };
 

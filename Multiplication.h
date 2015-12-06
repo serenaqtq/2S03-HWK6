@@ -16,7 +16,8 @@ class Multiplication : public ArithmeticExpression {
 public:
 	Multiplication();
 	~Multiplication();
-	string evaluate();
+	string evalute();
+	string evalute(Expression*, Expression*);
 	void print();
 };
 

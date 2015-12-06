@@ -18,9 +18,11 @@ Division::~Division() {
 	// TODO Auto-generated destructor stub
 }
 
-string Division::evaluate(){
+string Division::evaluate(Expression* left, Expression* right)
+{
 	//int output = left / right;
-	return "";//to_string(output);
+	float output =static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) / static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());
+	return 	std::to_string(output);
 }
 
 void Division:: print(){
