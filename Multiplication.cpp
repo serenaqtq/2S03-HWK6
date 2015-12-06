@@ -8,7 +8,6 @@
 #include "Multiplication.h"
 #include <iostream>//Include iostream for inputs and outputs
 using namespace std;
-int output=0;
 
 Multiplication:: Multiplication () {
 	// TODO Auto-generated constructor stub
@@ -20,12 +19,12 @@ Multiplication::~Multiplication() {
 }
 
 string Multiplication::evaluate(){
-	int output = left * right;
-	return output;
+	//int output = left * right;
+	return "";// output;
 }
 
 void Multiplication:: print(){
-	cout <<")"<< left << "*" << right << ")" << "= " << output;
+	cout <<")"<< left << "*" << right << ")" << "= ";
 
 }
 

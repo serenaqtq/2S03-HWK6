@@ -5,8 +5,8 @@
  *      Author: Serena
  */
 
-#ifndef ARITHMETICEXPRESSION_H_
-#define ARITHMETICEXPRESSION_H_
+#ifndef ARITHMETICEXPRESSION_H
+#define ARITHMETICEXPRESSION_H
 
 #include "Expression.h"
 using namespace std;
@@ -19,7 +19,8 @@ protected:
 	Expression* right;
 public:
 	ArithmeticExpression(string &str);
-	virtual ~ArithmeticExpression();
+	ArithmeticExpression();
+	~ArithmeticExpression();
 	string evaluate();
 	void print();
 	float convert(string &str);

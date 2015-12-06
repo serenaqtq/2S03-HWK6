@@ -5,8 +5,8 @@
  *      Author: Polly
  */
 
-#ifndef SUBTRACTION_H_
-#define SUBTRACTION_H_
+#ifndef SUBTRACTION_H
+#define SUBTRACTION_H
 #include<string>
 #include "ArithmeticExpression.h"
 using std::string;
@@ -15,7 +15,7 @@ using namespace std;
 class Subtraction: public ArithmeticExpression {
 public:
 	Subtraction();
-	virtual ~Subtraction();
+	~Subtraction();
 	string evalute();
 	void print();
 };

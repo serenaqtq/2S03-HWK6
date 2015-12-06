@@ -5,8 +5,8 @@
  *      Author: Sanamone
  */
 
-#ifndef MULTIPLICATION_H_
-#define MULTIPLICATION_H_
+#ifndef MULTIPLICATION_H
+#define MULTIPLICATION_H
 #include<string>
 #include "ArithmeticExpression.h"
 using std::string;
@@ -15,7 +15,7 @@ using namespace std;
 class Multiplication : public ArithmeticExpression {
 public:
 	Multiplication();
-	virtual ~Multiplication();
+	~Multiplication();
 	string evaluate();
 	void print();
 };

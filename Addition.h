@@ -5,8 +5,8 @@
  *      Author: Polly
  */
 
-#ifndef ADDITION_H_
-#define ADDITION_H_
+#ifndef ADDITION_H
+#define ADDITION_H
 #include<string>
 #include "ArithmeticExpression.h"
 using std::string;
@@ -15,7 +15,7 @@ using namespace std;
 class Addition: public ArithmeticExpression {
 public:
 	Addition();
-	virtual ~Addition();
+	~Addition();
 	string evalute();
 	void print();
 };

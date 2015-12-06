@@ -8,7 +8,6 @@
 #include "Division.h"
 #include <iostream>//Include iostream for inputs and outputs
 using namespace std;
-int output=0;
 
 Division::Division() {
 	// TODO Auto-generated constructor stub
@@ -20,11 +19,11 @@ Division::~Division() {
 }
 
 string Division::evaluate(){
-	int output = left / right;
-	return output;
+	//int output = left / right;
+	return "";//to_string(output);
 }
 
 void Division:: print(){
-	cout << "(" << left << "/" << right << ")" << "= " << output;
+	cout << "(" << left << "/" << right << ")" << "= ";
 
 }

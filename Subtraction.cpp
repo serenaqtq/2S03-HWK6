@@ -8,7 +8,6 @@
 #include "Subtraction.h"
 #include <iostream>
 using namespace std;
-int output=0;
 
 Subtraction:: Subtraction() {
 
@@ -19,12 +18,12 @@ Subtraction:: ~Subtraction(){
 }
 
 string Subtraction::evalute(){
-	int output = left - right;
-	return output;
+	//int output = left - right;
+	return "";//to_string(output);
 }
 
-void Addition:: print(){
-	cout << ")" << left << "-" << right << ")" <<output;
+void  Subtraction:: print(){
+	cout << ")" << left << "-" << right << ")";
 }
 
 

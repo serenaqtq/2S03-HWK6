@@ -7,6 +7,7 @@
 
 #include "ArithmeticExpression.h"
 #include <stdlib.h>
+#include <iostream>
 using namespace std;
 //void printPrivate(node* Ptr){
 //	printPrivate(root);
@@ -31,17 +32,20 @@ void ArithmeticExpression::breakE(){
 	int index = getIndex();
 	if (index == -1) {
 		key = '%';
+		cout << "key: " << key;
+		return;
 	} else {
 
 		char key = input[index];
+		cout << "key: " << key;
 		string subL = input.substr(0, index);
 		string subR = input.substr(index + 1, len);
-		Expression *left = new ArithmeticExpression(subL);
-		Expression *right = new ArithmeticExpression(subR);
+	    left = new ArithmeticExpression(subL);
 		left->breakE();
+		right = new ArithmeticExpression(subR);
 		right->breakE();
 	}
-
+	return;
 }
 
 int ArithmeticExpression::getIndex() {
@@ -98,6 +102,12 @@ float ArithmeticExpression::convert(string &str){
 	return atof(str.c_str());
 }
 
-string ArithmeticExpression::evaluate(){}
+string ArithmeticExpression::evaluate(){
+	return "";
+}
+
+ArithmeticExpression::ArithmeticExpression(){}
+
+
 
 

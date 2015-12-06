@@ -8,7 +8,6 @@
 #include "Addition.h"
 #include <iostream>
 using namespace std;
-int output=0;
 
 Addition:: Addition() {
 
@@ -19,12 +18,12 @@ Addition:: ~Addition(){
 }
 
 string Addition::evalute(){
-	int output = left + right;
-	return output;
+	//int output = left + right;
+	return "";// output;
 }
 
 void Addition:: print(){
-	cout << ")" << left << "+" << right << ")" <<output;
+	cout << ")" << left << "+" << right << ")";
 }
 
 

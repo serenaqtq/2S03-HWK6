@@ -5,8 +5,8 @@
  *      Author: Sanamone
  */
 
-#ifndef DIVISION_H_
-#define DIVISION_H_
+#ifndef DIVISION_H
+#define DIVISION_H
 #include<string>
 #include "ArithmeticExpression.h"
 using std::string;
@@ -14,7 +14,7 @@ using std::string;
 class Division: public ArithmeticExpression {
 public:
 	Division();
-	virtual ~Division();
+	~Division();
 	string evaluate();
 	void print();
 };

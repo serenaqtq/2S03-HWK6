@@ -106,8 +106,8 @@ int main() {
             cout << "Expression is not well formed" << endl;
         } else {
 			//calculator will run
-            Expression e = new ArithmeticExpression(input);
-            e.breakE();
+            Expression* e = new ArithmeticExpression(input);
+            e->breakE();
         }
 
 	}

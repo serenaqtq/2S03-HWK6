@@ -5,17 +5,17 @@
  *      Author: Serena
  */
 
-#ifndef EXPRESSION_H_
-#define EXPRESSION_H_
+#ifndef EXPRESSION_H
+#define EXPRESSION_H
 #include<string>
 using namespace std;
 //using std::string;
-using namespace std;
 
 class Expression {
 public:
+	static int counter;
 	Expression();
-	virtual ~Expression();
+    virtual ~Expression();
 	virtual string evaluate();
 	virtual void print();
 	virtual void breakE();
