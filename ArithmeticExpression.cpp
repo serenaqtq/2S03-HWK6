@@ -30,6 +30,7 @@ void ArithmeticExpression::breakE(){
 		input.erase(len - 1);
 	}
 	int index = getIndex();
+	cout << index << endl;
 	if (index == -1) {
 		key = '%';
 		cout << "key: " << key;
@@ -71,6 +72,9 @@ int ArithmeticExpression::getIndex() {
 			}
 		}
 	}
+	cout << input << endl;
+	cout << index << endl;
+
 	return index;
 }
 
@@ -84,7 +88,9 @@ int ArithmeticExpression::checkPresi(char temp) {
 	}
 }
 
-ArithmeticExpression::ArithmeticExpression(string &str) :Expression(){}
+ArithmeticExpression::ArithmeticExpression(string &str) :Expression(){
+	input = str;
+}
 
 ArithmeticExpression::~ArithmeticExpression() {
 	delete right;

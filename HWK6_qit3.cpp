@@ -96,7 +96,7 @@ int main() {
 		cout << "Please enter an expression: ";
 		getline(cin, input);
         if (input == "#") {
-			break;
+			//break;
 		}
 		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
 		trimBrackets(input);
@@ -108,9 +108,13 @@ int main() {
 			//calculator will run
             Expression* e = new ArithmeticExpression(input);
             e->breakE();
+			delete e;
         }
-
+		
 	}
+	cout << "counter= " << Expression::counter;
+	int a;
+	cin >> a;
 	return 0;
 }
 

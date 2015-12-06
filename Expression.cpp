@@ -11,13 +11,15 @@
 int Expression::counter = 0;
 Expression::Expression() {
 	counter++;
-	cout << "counter: " << counter;
+	cout << "counter: " << counter << endl;
 	// TODO Auto-generated constructor stub
 
 }
 
 Expression::~Expression() {
 	counter--;
+	cout << "counter: " << counter << endl;
+
 	// TODO Auto-generated destructor stub
 }
 
