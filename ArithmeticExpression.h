@@ -9,24 +9,25 @@
 #define ARITHMETICEXPRESSION_H_
 
 #include "Expression.h"
+using namespace std;
 class ArithmeticExpression: public Expression {
-private:
-	struct node
-	{
-		string key;
-		node* left;
-		node* right;
-	};
-	node* root;
-	void printPrivate(node* Ptr);
+protected:
+	int indexAtKey;
+	char key;
+	string input;
+	Expression* left;
+	Expression* right;
 public:
-	ArithmeticExpression();
+	ArithmeticExpression(string &str);
 	virtual ~ArithmeticExpression();
 	string evaluate();
 	void print();
 	float convert(string &str);
-	node* createLeaf(string &str);
-	void addLeaf(string key, node*Ptr);
+	//Expression* createLeaf(string &str);
+	//void addLeaf(char key, Expression* Ptr);
+	void breakE();
+	int checkPresi(char temp);
+	int getIndex();
 };
 
 #endif /* ARITHMETICEXPRESSION_H_ */

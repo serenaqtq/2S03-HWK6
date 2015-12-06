@@ -16,3 +16,6 @@ Expression::~Expression() {
 	// TODO Auto-generated destructor stub
 }
 
+void Expression::breakE(){}
+
+

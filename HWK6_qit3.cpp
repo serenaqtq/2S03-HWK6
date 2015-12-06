@@ -9,7 +9,13 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-using std::string;
+#include "Expression.h"
+#include "ArithmeticExpression.h"
+#include "Addition.h"
+#include "Subtraction.h"
+#include "Multiplication.h"
+#include "Division.h"
+//using std::string;
 using namespace std;
 bool checkBrackets(string &temp) {
 	int sum = 0;
@@ -99,7 +105,9 @@ int main() {
         if (!check) {
             cout << "Expression is not well formed" << endl;
         } else {
-				//calculator will run
+			//calculator will run
+            Expression e = new ArithmeticExpression(input);
+            e.breakE();
         }
 
 	}

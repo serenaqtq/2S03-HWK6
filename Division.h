@@ -8,6 +8,7 @@
 #ifndef DIVISION_H_
 #define DIVISION_H_
 #include<string>
+#include "ArithmeticExpression.h"
 using std::string;
 
 class Division: public ArithmeticExpression {

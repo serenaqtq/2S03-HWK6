@@ -8,7 +8,9 @@
 #ifndef MULTIPLICATION_H_
 #define MULTIPLICATION_H_
 #include<string>
+#include "ArithmeticExpression.h"
 using std::string;
+using namespace std;
 
 class Multiplication : public ArithmeticExpression {
 public:

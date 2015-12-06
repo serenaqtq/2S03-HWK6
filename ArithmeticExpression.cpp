@@ -7,34 +7,84 @@
 
 #include "ArithmeticExpression.h"
 #include <stdlib.h>
-void printPrivate(node* Ptr){
-	printPrivate(root);
+using namespace std;
+//void printPrivate(node* Ptr){
+//	printPrivate(root);
+//}
+
+//void ArithmeticExpression::addLeaf(char key, Expression* Ptr){
+
+//}
+//Expression* ArithmeticExpression::createLeaf(string &str){
+	//input = str;
+	//left = NULL;
+	//right = NULL;
+//}
+
+void ArithmeticExpression::breakE(){
+	int len = input.length();
+	//may need to add brackets to prevent (3+5)/(2+3)
+	if (input[0] == '(' && input[len - 1] == ')') {
+		input.erase(0);
+		input.erase(len - 1);
+	}
+	int index = getIndex();
+	if (index == -1) {
+		key = '%';
+	} else {
+
+		char key = input[index];
+		string subL = input.substr(0, index);
+		string subR = input.substr(index + 1, len);
+		Expression *left = new ArithmeticExpression(subL);
+		Expression *right = new ArithmeticExpression(subR);
+		left->breakE();
+		right->breakE();
+	}
+
 }
 
-void ArithmeticExpression::addLeaf(string key, node*Ptr){
+int ArithmeticExpression::getIndex() {
+	int presi = 4;
+	int index = -1;
+	int len = input.length();
+	for (int i = 0; i < len; i++) {
+		if (input[i] > '9' || input[i] < '0') {
+			int temp = checkPresi(input[i]);
+			if (temp <= presi) {
+				index = i;
+				presi = temp;}
+		}
 
+		if (input[i] == '(') {
+			i++;
+			int leftB = 1;
+			int rightB = 0;
+			while (i < len && leftB != rightB) {
+				if (input[i] == '(') {leftB++;}
+				if (input[i] == ')') {rightB++;}
+				i++;
+			}
+		}
+	}
+	return index;
 }
-node* ArithmeticExpression::createLeaf(string &str){
-	node* a = new node;
-	a->key = str;
-	a->left = NULL;
-	a->right = NULL;
-	return a;
+
+int ArithmeticExpression::checkPresi(char temp) {
+	if (temp == '+' || temp == '-') {
+		return 1;
+	} else if (temp == '*' || temp == '/') {
+		return 2;
+	} else{
+		return 3;
+	}
 }
 
-
-ArithmeticExpression::ArithmeticExpression() {}
+ArithmeticExpression::ArithmeticExpression(string &str) :Expression(){}
 
 ArithmeticExpression::~ArithmeticExpression() {
-	if(root != NULL){
-		if (root->left != NULL) {
-			~ArithmeticExpression();
-		}
-		if (root->right != NULL) {
-			~ArithmeticExpression();
-		}
-		delete root;
-	}
+	delete right;
+	delete left;
 }
 
 void ArithmeticExpression::print(){
@@ -42,32 +92,12 @@ void ArithmeticExpression::print(){
 }
 
 float ArithmeticExpression::convert(string &str){
-	if (str[0] == '-') {
-		str.erase(0);
-	}
+//	if (str[0] == '-') {
+//		str.erase(0);
+//	}
 	return atof(str.c_str());
 }
 
-string ArithmeticExpression::evaluate(){
-	int len = input.length();
-	bool checkBase = true;
-	for (int i = 0; i < len; i++) {
-		if (input[i] == '+' || input[i] == '*' || input[i] == '/') {
-			checkBase = false;
-		}
-	}
-	if (checkBase) {
-		return input;
-	} else {
-		//recursion
-		if (input[0] != '(') {
-			int count = 1;
-			while (input[count] <= '9' && input[count] >= '0' && count < len) {
-				count++;
-			}
-			if () {}
-		} else {}
-	}
-}
+string ArithmeticExpression::evaluate(){}
 
 
