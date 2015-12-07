@@ -16,8 +16,8 @@ class Addition: public ArithmeticExpression {
 public:
 	Addition();
 	~Addition();
-	string evalute();
-	string evalute(Expression*, Expression*);
+	string evaluate();
+	string evaluate(Expression*, Expression*);
 	void print();
 };
 

@@ -8,7 +8,9 @@
 
 #include <iostream>
 #include <string>
+#include<iomanip>//import fix
 #include <algorithm>
+#include <stdlib.h>//import atof()
 #include "Expression.h"
 #include "ArithmeticExpression.h"
 #include "Addition.h"
@@ -29,22 +31,31 @@ bool checkBrackets(string &temp) {
 			sumL++;
 			if (i != len - 1) {
 				if (temp[i + 1] == '+' || temp[i + 1] == '*' ||
-						temp[i + 1] == '/') {
+						temp[i + 1] == '/' || temp[i + 1] == ')') {
 					check = false;}
+				cout << "check1: " << check << endl;
 			}
 		}
 		if (temp[i] == ')') {
 			sum++;
 			sumR++;
 			if (i != len) {
-				if (temp[len - 1] == ')') {check = false;}
+				if (temp[i + 1] == '(') {
+					check = false;
+					cout << "check2: " << check << endl;
+				}
 			}
 		}
 	}
+	cout << "sumL: " << sumL;
+	cout << "sumR: " << sumR;
+	cout << "sum: " << sum;
 	if (sum % 2 != 0) {
 		check = false;
+		cout << "check3: " << check << endl;
 	} else if (sumL != sumR){
 		check = false;
+		cout << "check4: " << check << endl;
 	}
 	return check;
 }
@@ -56,34 +67,29 @@ bool checkExpr(string &temp){
 			if (temp[i + 1] == ')' || temp[i + 1] == '+' || temp[i + 1] == '-'
 					|| temp[i + 1] == '*' || temp[i + 1] == '/') {
 				check = false;
+				cout << "check5: " << check << endl;
+
 			}
 		}
 	}
 	if (temp[len - 1] == '+' || temp[len - 1] == '-' || temp[len - 1] == '*'
 			|| temp[len - 1] == '/' || temp[len - 1] == '(') {
 		check = false;
+		cout << "check6: " << check << endl;
+
 	}
 	if (temp[0] == '+' || temp[0] == '-' || temp[0] == '*'|| temp[0] == '/' || temp[0] == ')') {
 			check = false;
+			cout << "check7: " << check << endl;
+
 		}
+
 
 
 	return check;
 }
 
 
-
-void trimBrackets(string &str) {
-	int len = str.length();
-	for (int i = 0; i < len - 1; i++) {
-		if (str[i] == '(' && str[i + 1] == '(') {
-			str.erase(str.begin()+ (i + 1));
-		}
-		if (str[i] == ')' && str[i + 1] == ')') {
-			str.erase(str.begin()+ (i + 1));
-		}
-	}
-}
 bool errorChecking(string &temp) {
 	return checkExpr(temp) && checkBrackets(temp);
 }
@@ -96,18 +102,31 @@ int main() {
 		cout << "Please enter an expression: ";
 		getline(cin, input);
         if (input == "#") {
-			//break;
+			break;
 		}
 		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-		trimBrackets(input);
 		cout << input << endl;
 		bool check = errorChecking(input);
         if (!check) {
             cout << "Expression is not well formed" << endl;
         } else {
 			//calculator will run
+			int len = input.length();
+			for (int i = 1; i < len - 2; i++) {
+				if (input[i] == ')' && (input[i + 1] == '+' || input[i + 1] == '-' || input[i + 1] == '*' ||
+					input[i + 1] == '/') && input[i + 2] == '(') {
+					input = "(" + input + ")";
+					i += 3;
+					break;
+				}
+
+			}
             Expression* e = new ArithmeticExpression(input);
             e->breakE();
+			e->print();
+			float output = stof(e->evaluate());
+			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
+			cout << '=' << output << endl;
 			delete e;
         }
 		

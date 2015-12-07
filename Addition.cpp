@@ -17,9 +17,13 @@ Addition:: ~Addition(){
 
 }
 
-string Addition::evalute(Expression* left, Expression* right){
+string Addition::evaluate(Expression* left, Expression* right){
 	//int output = left + right;
 	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) + static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	return 	std::to_string(output);
+}
+
+string Addition::evaluate() {
+	return "";
 }
 
 void Addition:: print(){

@@ -11,13 +11,13 @@
 #include "Expression.h"
 using namespace std;
 class ArithmeticExpression: public Expression {
-protected:
+public:
 	int indexAtKey;
 	char key;
 	string input;
 	Expression* left;
 	Expression* right;
-public:
+
 	ArithmeticExpression(string &str);
 	ArithmeticExpression();
 	~ArithmeticExpression();

@@ -16,8 +16,8 @@ class Division: public ArithmeticExpression {
 public:
 	Division();
 	~Division();
-	string evalute();
-	string evalute(Expression* left, Expression* right);
+	string evaluate();
+	string evaluate(Expression* left, Expression* right);
 	void print();
 };
 

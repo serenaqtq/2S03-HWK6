@@ -18,6 +18,10 @@ Division::~Division() {
 	// TODO Auto-generated destructor stub
 }
 
+string Division::evaluate() {
+	return "";
+}
+
 string Division::evaluate(Expression* left, Expression* right)
 {
 	//int output = left / right;

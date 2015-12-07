@@ -16,8 +16,8 @@ class Subtraction: public ArithmeticExpression {
 public:
 	Subtraction();
 	~Subtraction();
-	string evalute();
-	string evalute(Expression*, Expression*);
+	string evaluate();
+	string evaluate(Expression*, Expression*);
 	void print();
 };
 

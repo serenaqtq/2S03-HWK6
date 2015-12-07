@@ -18,9 +18,14 @@ Multiplication::~Multiplication() {
 	// TODO Auto-generated destructor stub
 }
 
-string Multiplication::evaluate(Expression* left, Expression* right)){
+string Multiplication::evaluate(Expression* left, Expression* right){
 	//int output = left * right;
-	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) * static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	return 	std::to_string(output);
+	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) * static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	
+	return 	std::to_string(output);
+}
+
+string Multiplication::evaluate() {
+	return "";
 }
 
 void Multiplication:: print(){
