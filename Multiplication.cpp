@@ -1,35 +1,29 @@
 /*
- * Multiplication.cpp
- *
- *  Created on: Dec 5, 2015
- *      Author: Sanamone
- */
+* Name: ?Tianqi Qi, Polly Yao, Shiyu Luo
+* MacID: ?qit3, yaos5, luos
+* Student Number: 1405930, 1215549, 1317135
+* Description: The Multiplication class evaluates the two pointer expression multiplications and returns the result as a string
+*/
 
-#include "Multiplication.h"
+#include "Multiplication.h"//import Division header
 #include <iostream>//Include iostream for inputs and outputs
-using namespace std;
+using namespace std;//Using namespace std for cout and cin
 
-Multiplication:: Multiplication () {
-	// TODO Auto-generated constructor stub
+Multiplication:: Multiplication () {//Default constructor for Multiplication
 
 }
 
-Multiplication::~Multiplication() {
-	// TODO Auto-generated destructor stub
+Multiplication::~Multiplication() {//Default destructor for Division
 }
 
-string Multiplication::evaluate(Expression* left, Expression* right){
+string Multiplication::evaluate(Expression* left, Expression* right){//evaluate multiplication for the left and right pointers
 	//int output = left * right;
-	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) * static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	
-	return 	std::to_string(output);
+	float output = static_cast<ArithmeticExpression*>(left)->convert(left->evaluate()) * static_cast<ArithmeticExpression*>(right)->convert(right->evaluate());	//evaluate multiplication of the expression pointed to by the left and right pointers and convert evaluated result pointer of the base class Expression to a pointer of a ArithmeticExpression
+	return 	std::to_string(output);//convert the result to string and return result
 }
 
-string Multiplication::evaluate() {
-	return "";
-}
-
-void Multiplication:: print(){
-	cout <<")"<< left << "*" << right << ")" << "= ";
+void Multiplication:: print(){//print out multiplication
+	cout <<")"<< left << "*" << right << ")" << "= ";//print out multiplication to screen
 
 }
 

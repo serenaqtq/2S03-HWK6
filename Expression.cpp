@@ -1,32 +1,25 @@
 /*
- * Expression.cpp
- *
- *  Created on: Dec 3, 2015
- *      Author: Serena
- */
+* Name: ?Tianqi Qi, Polly Yao, Shiyu Luo
+* MacID: ?qit3, yaos5, luos
+* Student Number: 1405930, 1215549, 1317135
+* Description: The Expression class is the parent class of all other sub classes and
+* defiles all the recursion functions that will be used to break, evaluate and print the expressions
+*/
 
-#include "Expression.h"
-#include <iostream>
+#include "Expression.h"//import expression
+#include <iostream>//import iostream
 
-int Expression::counter = 0;
-Expression::Expression() {
-	counter++;
-	cout << "counter: " << counter << endl;
-	// TODO Auto-generated constructor stub
+Expression::Expression() {//default contructor for Expression
 
 }
 
-Expression::~Expression() {
-	counter--;
-	cout << "counter: " << counter << endl;
-
-	// TODO Auto-generated destructor stub
+Expression::~Expression() {//default destrctor for Expression
 }
 
-void Expression::breakE(){}
+void Expression::breakE(){}//Function to break up expression through recursion
 
-string Expression::evaluate(){
-	return "";
+string Expression::evaluate(){//Function to evaluate expression
+	return "";//return empty string
 }
-void Expression::print(){}
+void Expression::print(){}//Function to print expression
 
