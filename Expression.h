@@ -11,8 +11,6 @@ public://define all public variables and functions
 	//static int counter;//define counter as a static int
 	Expression();//define default constructor
     virtual ~Expression();//define virtual default destructor
-	virtual void breakEI();//define virtual breakEI()
-	virtual void increment();//define virtual increment()
 	virtual string evaluate();//define evaluate as a virtual function that returns string
 	virtual void print();//define print as a virtual function that returns null
 	virtual void breakE();//defien breakE as a virtual function that returns null

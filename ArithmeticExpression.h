@@ -13,9 +13,6 @@ public://define public functions and variables
 	Expression* left;//define left pointer as a base pointer to Expression
 	Expression* right;//define right pointer as a base pointer to Expression
 
-	void ArithmeticExpression::breakEI();//break expression and increment value by one
-	void ArithmeticExpression::increment();//increment the value by one
-	ArithmeticExpression(const Expression* old);//define copy constructor
 	ArithmeticExpression(string &str);//define constructor for ArithmeticExpression
 	ArithmeticExpression();//define default constructor
 	~ArithmeticExpression();//define default destrctor 

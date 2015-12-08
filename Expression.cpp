@@ -1,6 +1,6 @@
 /*
-* Name: ?Tianqi Qi, Polly Yao, Shiyu Luo
-* MacID: ?qit3, yaos5, luos
+* Name: Tianqi Qi, Polly Yao, Shiyu Luo
+* MacID: qit3, yaos5, luos
 * Student Number: 1405930, 1215549, 1317135
 * Description: The Expression class is the parent class of all other sub classes and
 * defiles all the recursion functions that will be used to break, evaluate and print the expressions
@@ -16,13 +16,6 @@ Expression::Expression() {//default contructor for Expression
 Expression::~Expression() {//default destrctor for Expression
 }
 
-void Expression::breakEI()
-{
-}
-
-void Expression::increment()
-{
-}
 
 void Expression::breakE(){}//Function to break up expression through recursion
 

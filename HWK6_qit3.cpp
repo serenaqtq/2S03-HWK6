@@ -1,6 +1,6 @@
 /*
- Name: ?Tianqi Qi, Polly Yao, Shiyu Luo
- MacID: ?qit3, yaos5, luos
+ Name: Tianqi Qi, Polly Yao, Shiyu Luo
+ MacID: qit3, yaos5, luos
  Student Number: 1405930, 1215549, 1317135
  Description: This is a C++ program that will take in a simple integer expression
  entered by the user and evaluate the expression through recursion. The expression
@@ -158,17 +158,6 @@ int main() {//main function
 			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
 			cout << '=' << output << endl;//print the result of evaluating the equation
-			cout << "Please enter an expression: ";//prints message asking for user to enter expression
-			getline(cin, input);//take in input
-			if (input == "@") {
-				Expression* newE = new ArithmeticExpression(e);
-				newE->increment();
-				float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
-				std::cout << std::fixed << std::setprecision(2);//set two decimal place
-				cout << '=' << output << endl;//print the result of evaluating the equation
-				delete newE;
-			}
-
 			delete e;//destruct e
         }
 		

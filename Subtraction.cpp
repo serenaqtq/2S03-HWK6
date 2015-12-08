@@ -1,6 +1,6 @@
 /*
-* Name: ?Tianqi Qi, Polly Yao, Shiyu Luo
-* MacID: ?qit3, yaos5, luos
+* Name: Tianqi Qi, Polly Yao, Shiyu Luo
+* MacID: qit3, yaos5, luos
 * Student Number: 1405930, 1215549, 1317135
 * Description: The Subtraction class evaluates the two pointer expression subtractions and returns the result as a string
 */
