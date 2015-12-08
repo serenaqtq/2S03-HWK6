@@ -7,12 +7,15 @@
 using namespace std;//Using namespace std for cout and cin
 class ArithmeticExpression: public Expression { //class ArithmeticExpression inherites Expression
 public://define public functions and variables
-	int indexAtKey;
+	int index;//define index in string at key as an integer
 	char key;//define key as a char
 	string input;//define input as a string
 	Expression* left;//define left pointer as a base pointer to Expression
 	Expression* right;//define right pointer as a base pointer to Expression
 
+	void ArithmeticExpression::breakEI();//break expression and increment value by one
+	void ArithmeticExpression::increment();//increment the value by one
+	ArithmeticExpression(const Expression* old);//define copy constructor
 	ArithmeticExpression(string &str);//define constructor for ArithmeticExpression
 	ArithmeticExpression();//define default constructor
 	~ArithmeticExpression();//define default destrctor 

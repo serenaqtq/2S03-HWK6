@@ -17,6 +17,79 @@
 #include <iostream>//Import iostream
 using namespace std;//Using namespace std for cout and cin
 
+ArithmeticExpression::ArithmeticExpression(const Expression* old) :Expression(){
+	
+	//cout << counter << endl;
+	//counter++;
+	
+	input = static_cast<ArithmeticExpression>(old).input;//---------------This line-------------
+	cout << "Here" << endl;
+	key = static_cast<ArithmeticExpression>(old).key;
+	index = static_cast<ArithmeticExpression>(old).index;
+	
+	if (index == -1 || index == 100) {
+		
+		return;
+
+	}
+	else {
+		
+		Expression *l = new ArithmeticExpression(static_cast<Expression*>(static_cast<ArithmeticExpression>(old).left));
+		Expression *r = new ArithmeticExpression(static_cast<Expression*>(static_cast<ArithmeticExpression>(old).right));
+	}
+	return;
+}
+
+void ArithmeticExpression::increment() {
+	breakEI();
+	print();
+}
+
+void ArithmeticExpression::breakEI() {
+	int len = input.length();//initialize len as length of input
+	bool extraBrackets = true;//initialize extraBrackets as true
+							  //deletes outter most brackets until there are no extra outmost brackets overlaid 
+	while (extraBrackets && input[0] == '(') {//if condition is true and the first character in the input is a left bracket
+		int counter = 1;//initialize counter for the brackets as 1
+		len = input.length();//set len as the string length
+		for (int i = 1; i < len; i++) {//for index between 1 and length
+			if (input[i] == '(') {//if character is a left bracket
+				counter++;//increament counter for brackets by 1
+			}
+			if (input[i] == ')') {//if character is a right bracket
+				counter--;//decrease counter for brackets by 1
+			}
+			if (i != len - 1 && counter == 0) {//if counter reaches 0 before reaching the end index of the input, then all brackets are balanced and there are not extra brackets
+				extraBrackets = false;//change extraBrackets to false
+				break;//break out of the while loop
+			}
+			else if (i == len - 1 && counter == 0) {//if counter reaches 0 when at the last index of the input, then trim outer brackets
+				input = input.substr(1, len - 2);//input is the substring without the brackets
+			}
+		}
+	}
+	len = input.length();//length of the string
+	index = getIndex();//get the index  
+	if (index == -1 || index == 100) {//if index is equal to -1 or 100 then the character is a number or a negative number, set key to "%"
+		key = '%';//set key to '%' to represent a number
+		float temp = stof(input);
+		input = to_string(temp + 1);
+		return;//return null
+	}
+	else {//if index is any other number, then there are arithmetic operators in the input
+
+		key = input[index];//retrieve the operator at the returned index
+						   //split the expression into 2 parts
+		string subL = input.substr(0, index);//left part of the expression
+		string subR = input.substr(index + 1, len);//right part of the expression
+		left = new ArithmeticExpression(subL); //initialize left as an ArithmeticExpression object
+		left->breakEI();//call recursion to break left part into the left and right part
+		right = new ArithmeticExpression(subR);//initialize right as an ArithmeticExpression object
+		right->breakEI();//call retursion to break right part into th left and right part
+	}
+	return;//return null
+}
+
 void ArithmeticExpression::breakE(){//break up the expression
 	int len = input.length();//initialize len as length of input
 		bool extraBrackets = true;//initialize extraBrackets as true
@@ -41,7 +114,7 @@ void ArithmeticExpression::breakE(){//break up the expression
 			}
 	}
 	len = input.length();//length of the string
-	int index = getIndex();//get the index  
+	index = getIndex();//get the index  
 	if (index == -1 || index == 100) {//if index is equal to -1 or 100 then the character is a number or a negative number, set key to "%"
 		key = '%';//set key to '%' to represent a number
 		return;//return null
@@ -102,6 +175,7 @@ int ArithmeticExpression::checkPresi(char temp) {//check the precedence of arith
 	}
 }
 
+
 ArithmeticExpression::ArithmeticExpression(string &str) :Expression(){//constructor for the ArithmeticExpression class
 	input = str;//store string in input
 }
@@ -113,12 +187,16 @@ ArithmeticExpression::~ArithmeticExpression() {//destrctor for the ArithmeticExp
 
 void ArithmeticExpression::print(){//print out the expression recursively
 	if (key == '%') {//if key is equal to '%', this means the character is either a number or a negative number
-		cout << '(' << input << ')';//print out 
+		cout << input;//print out 
 	}
 	else {//if key is equal to an operator 
+		cout << '(';//print a bracket
 		left->print();//call recursion to print out the left side of the expression
+		cout << ')';//print a bracket
 		cout << key;//print out the operator
+		cout << '(';//print a bracket
 		right->print();//call recursion to print out the right side of the expression
+		cout << ')';//print a bracket
 	}
 }
 
@@ -161,7 +239,3 @@ string ArithmeticExpression::evaluate(){//evaluate the expression recursively
 }
 
 ArithmeticExpression::ArithmeticExpression(){}//default contructor
-
-
-
-

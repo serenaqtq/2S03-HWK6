@@ -158,12 +158,23 @@ int main() {//main function
 			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
 			cout << '=' << output << endl;//print the result of evaluating the equation
+			cout << "Please enter an expression: ";//prints message asking for user to enter expression
+			getline(cin, input);//take in input
+			if (input == "@") {
+				Expression* newE = new ArithmeticExpression(e);
+				newE->increment();
+				float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
+				std::cout << std::fixed << std::setprecision(2);//set two decimal place
+				cout << '=' << output << endl;//print the result of evaluating the equation
+				delete newE;
+			}
+
 			delete e;//destruct e
         }
 		
 	}
-	int a;//create integer a
-	cin >> a;//take in another user input
+	//int a;//create integer a
+	//cin >> a;//take in another user input
 	return 0;
 }
 
