@@ -158,6 +158,13 @@ int main() {//main function
 			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
 			cout << '=' << output << endl;//print the result of evaluating the equation
+			Expression* c = new ArithmeticExpression(e);
+			c->increment();
+			c->print();
+			float temp = stof(c->evaluate());//call evaluate on e and convert the result to a float
+			std::cout << std::fixed << std::setprecision(2);//set two decimal place
+			cout << '=' << temp << endl;//print the result of evaluating the equation
+			delete c;
 			delete e;//destruct e
         }
 		

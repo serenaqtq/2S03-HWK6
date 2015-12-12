@@ -16,6 +16,10 @@ Expression::Expression() {//default contructor for Expression
 Expression::~Expression() {//default destrctor for Expression
 }
 
+void Expression::increment()
+{
+}
+
 
 void Expression::breakE(){}//Function to break up expression through recursion
 

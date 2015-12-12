@@ -8,6 +8,7 @@
 * Then the smaller expressions are evaluated and printed through recursion. 
 */
 
+#include<iomanip>//import fix
 #include "ArithmeticExpression.h"//Import the ArithmeticExpression header
 #include "Addition.h"//Import the Addtion header
 #include "Subtraction.h"//Import the Subtraction Header
@@ -112,9 +113,21 @@ ArithmeticExpression::~ArithmeticExpression() {//destrctor for the ArithmeticExp
 	delete left;//destruct left pointer
 }
 
+void ArithmeticExpression::increment() {
+	if (index == -1 || index == 100) {
+		float temp = stof(input);
+		input = to_string(temp + 1);
+	}
+	else {
+		left->increment();
+		right->increment();
+	}
+}
+
 void ArithmeticExpression::print(){//print out the expression recursively
 	if (key == '%') {//if key is equal to '%', this means the character is either a number or a negative number
-		cout << input;//print out 
+		std::cout << std::fixed << std::setprecision(2);//set two decimal place
+		cout << convert(input);//print out 
 	}
 	else {//if key is equal to an operator 
 		cout << '(';//print a bracket
@@ -166,3 +179,17 @@ string ArithmeticExpression::evaluate(){//evaluate the expression recursively
 }
 
 ArithmeticExpression::ArithmeticExpression(){}//default contructor
+
+ArithmeticExpression::ArithmeticExpression(Expression* old){
+	index = static_cast<ArithmeticExpression*>(old)->index;
+	key = static_cast<ArithmeticExpression*>(old)->key;
+	input = static_cast<ArithmeticExpression*>(old)->input;
+	if (index == -1 || index == 100) {//if index is equal to -1 or 100 then the character is a number or a negative number, set key to "%"
+		return;//return null
+	}
+	else {
+		left = new ArithmeticExpression(static_cast<ArithmeticExpression*>(old)->left); //initialize left as an ArithmeticExpression object
+		right = new ArithmeticExpression(static_cast<ArithmeticExpression*>(old)->right); //initialize left as an ArithmeticExpression object
+	}
+	return;
+}

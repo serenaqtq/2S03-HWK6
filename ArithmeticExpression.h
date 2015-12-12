@@ -14,8 +14,12 @@ public://define public functions and variables
 	Expression* right;//define right pointer as a base pointer to Expression
 
 	ArithmeticExpression(string &str);//define constructor for ArithmeticExpression
-	ArithmeticExpression();//define default constructor
-	~ArithmeticExpression();//define default destrctor 
+	ArithmeticExpression();
+	ArithmeticExpression(Expression* old);
+	//define default constructor
+	~ArithmeticExpression();
+	void increment();
+	//define default destrctor 
 	string evaluate();//define evaluate to return a string
 	void print();//define print to return null
 	float convert(string &str);//define convert to return a float
