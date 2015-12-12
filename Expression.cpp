@@ -16,7 +16,7 @@ Expression::Expression() {//default contructor for Expression
 Expression::~Expression() {//default destrctor for Expression
 }
 
-void Expression::increment()
+void Expression::increment()//method to increment the number in the expression
 {
 }
 

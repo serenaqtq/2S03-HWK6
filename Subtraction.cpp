@@ -23,7 +23,7 @@ string Subtraction::evaluate(Expression* left, Expression* right){//evaluate sub
 	return 	std::to_string(output);//convert the result to string and return result
 }
 
-void  Subtraction:: print(){
+void  Subtraction:: print(){//prints subtraction
 	cout << ")" << left << "-" << right << ")"  ;
 }
 

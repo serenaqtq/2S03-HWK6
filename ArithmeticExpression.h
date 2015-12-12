@@ -13,11 +13,11 @@ public://define public functions and variables
 	Expression* left;//define left pointer as a base pointer to Expression
 	Expression* right;//define right pointer as a base pointer to Expression
 
-	ArithmeticExpression(string &str);//define constructor for ArithmeticExpression
-	ArithmeticExpression();
+	ArithmeticExpression(string &str);//define constructor for ArithmeticExpression taking string as an input
+	ArithmeticExpression();//default constructor 
 	ArithmeticExpression(Expression* old);
 	//define default constructor
-	~ArithmeticExpression();
+	~ArithmeticExpression();//default destructor
 	void increment();
 	//define default destrctor 
 	string evaluate();//define evaluate to return a string

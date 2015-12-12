@@ -66,34 +66,34 @@ bool checkBrackets(string &temp) {//handle all the error checking for brackets
 	return check; //return check
 }
 
-string checkSpace(string &temp) {
-	int iSpaces = 0;
-	int index = -1;
-	std::string op = "no error";
+string checkSpace(string &temp) {//handles the error checking for the spaces between the entered expression
+	int iSpaces = 0;//set number of spaces as 0
+	int index = -1;//set index as -1
+	std::string op = "no error";//set string op to "no error"
 
-	int len = temp.length();
-	for (int i = 0; i < len; i++) {
-		if (temp.at(i) == ' '){
-			if (temp.at(i + 1) == ' ') {
-				iSpaces++;
-				index = i;
+	int len = temp.length();//set len to length string
+	for (int i = 0; i < len; i++) {//for index from zero to length of string
+		if (temp.at(i) == ' '){//if the character at the index is a space
+			if (temp.at(i + 1) == ' ') {//if the next character is a spaces
+				iSpaces++;//increment the number of spces
+				index = i;//set old index to current index
 			}
-			else {
-				iSpaces++;
-				index = i;
-				break;
+			else {//if the next character is not a space
+				iSpaces++;//increment the number of spaces
+				index = i;//set old index to current index
+				break;//break out of the for loop
 			}
 
 		}
 	}
-	for (int i = 0; i < len; i++) {
-		if (temp.at(i) == ' ') {
-			if ((temp.at(index - iSpaces) <= '9' && temp.at(index - iSpaces) >= '0') && temp.at(index + 1) <= '9' && temp.at(index + 1) >= '0') {
-				op = "number";
+	for (int i = 0; i < len; i++) {//for index from 0 to length of the string
+		if (temp.at(i) == ' ') {//if the character at current index is a space
+			if ((temp.at(index - iSpaces) <= '9' && temp.at(index - iSpaces) >= '0') && temp.at(index + 1) <= '9' && temp.at(index + 1) >= '0') {//check if the characters on the left and right of the space/spaces are numbers or arithmetic operators
+				op = "number";//if the character on the left or right of the spaces is a number
 			}
 		}
 	}
-	return op;
+	return op;//return the op either as no error or number to indicate the expression is not well formed
 }
 
 bool checkExpr(string &temp){//handle the error checking for the expression
@@ -132,7 +132,7 @@ int main() {//main function
         if (input == "#") {//if user enters '#'
 			break;//break out of the while loop and the program exists
 		}
-		string check2 = checkSpace(input);
+		string check2 = checkSpace(input); //store the result of error checking for spaces into check2
 
 		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());//remove the spaces in the expression
 		bool check = errorChecking(input);//get result of error checking
@@ -158,10 +158,10 @@ int main() {//main function
 			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
 			cout << '=' << output << endl;//print the result of evaluating the equation
-			Expression* c = new ArithmeticExpression(e);
-			c->increment();
-			c->print();
-			float temp = stof(c->evaluate());//call evaluate on e and convert the result to a float
+			Expression* c = new ArithmeticExpression(e); //create a derived ArithmeticExpression object c pointed to by the base class pointer to Expression
+			c->increment();//call increment on c
+			c->print();//call print on c
+			float temp = stof(c->evaluate());//call evaluate on c and convert the result to a float
 			std::cout << std::fixed << std::setprecision(2);//set two decimal place
 			cout << '=' << temp << endl;//print the result of evaluating the equation
 			delete c;

@@ -113,14 +113,14 @@ ArithmeticExpression::~ArithmeticExpression() {//destrctor for the ArithmeticExp
 	delete left;//destruct left pointer
 }
 
-void ArithmeticExpression::increment() {
-	if (index == -1 || index == 100) {
-		float temp = stof(input);
-		input = to_string(temp + 1);
+void ArithmeticExpression::increment() {//increment all the numebers in the expression
+	if (index == -1 || index == 100) {//if the current charater is a number or a negative numbr
+		float temp = stof(input);//convert input to float and stores the value in temp
+		input = to_string(temp + 1);//increment the number
 	}
-	else {
-		left->increment();
-		right->increment();
+	else {//if current character is an arithmetic operator
+		left->increment();//call recursion to increment the left side of the expression
+		right->increment();//call recursion to increment the right side of the expression
 	}
 }
 
@@ -181,9 +181,9 @@ string ArithmeticExpression::evaluate(){//evaluate the expression recursively
 ArithmeticExpression::ArithmeticExpression(){}//default contructor
 
 ArithmeticExpression::ArithmeticExpression(Expression* old){
-	index = static_cast<ArithmeticExpression*>(old)->index;
-	key = static_cast<ArithmeticExpression*>(old)->key;
-	input = static_cast<ArithmeticExpression*>(old)->input;
+	index = static_cast<ArithmeticExpression*>(old)->index; //type cast Expression pointer to ArithmeticExpression pointer can store result in index
+	key = static_cast<ArithmeticExpression*>(old)->key; //type cast Expression pointer to ArithmeticExpression pointer can store result in key
+	input = static_cast<ArithmeticExpression*>(old)->input; //type cast Expression pointer to ArithmeticExpression pointer can store result in input
 	if (index == -1 || index == 100) {//if index is equal to -1 or 100 then the character is a number or a negative number, set key to "%"
 		return;//return null
 	}
