@@ -133,11 +133,7 @@ int main() {//main function
         if (input == "#") {//if user enters '#'
 			break;//break out of the while loop and the program exists
 		}
-<<<<<<< HEAD
 		string check2 = checkSpace(input); //store the result of error checking for spaces into check2
-=======
-		string check2 = checkSpace(input);//store a string
->>>>>>> origin/master
 
 		if (input != "@") {
 			input.erase(std::remove(input.begin(), input.end(), ' '), input.end());//remove the spaces in the expression
@@ -167,25 +163,12 @@ int main() {//main function
 				c = new ArithmeticExpression(e);
 				delete e;//destruct e
 			}
-<<<<<<< HEAD
-            Expression* e = new ArithmeticExpression(input);//create a derived ArithmeticExpression object e pointed to by the base class pointer to Expression
-            e->breakE();//call breakE on e
-			e->print();//call print on e
-			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
-			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
-			cout << '=' << output << endl;//print the result of evaluating the equation
-			Expression* c = new ArithmeticExpression(e); //create a derived ArithmeticExpression object c pointed to by the base class pointer to Expression
-			c->increment();//call increment on c
-			c->print();//call print on c
-			float temp = stof(c->evaluate());//call evaluate on c and convert the result to a float
-=======
 		}
 		else if (input == "@") {
 			
 			c->increment();//call increment
 			c->print();//call print
 			float temp = stof(c->evaluate());//call evaluate on e and convert the result to a float
->>>>>>> origin/master
 			std::cout << std::fixed << std::setprecision(2);//set two decimal place
 			cout << '=' << temp << endl;//print the result of evaluating the equation
 			delete c;//destruct c
