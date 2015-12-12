@@ -125,6 +125,7 @@ bool errorChecking(string &temp) {//combines the error handling for expression a
 
 
 int main() {//main function
+	Expression* c = NULL;//build a global variable
 	while (true) {//programs runs until user manually exits
 		string input;//create string input
 		cout << "Please enter an expression: ";//prints message asking for user to enter expression
@@ -132,41 +133,47 @@ int main() {//main function
         if (input == "#") {//if user enters '#'
 			break;//break out of the while loop and the program exists
 		}
-		string check2 = checkSpace(input);
+		string check2 = checkSpace(input);//store a string
 
-		input.erase(std::remove(input.begin(), input.end(), ' '), input.end());//remove the spaces in the expression
-		bool check = errorChecking(input);//get result of error checking
-        if (!check || check2 == "number") {//if check returns false
-            cout << "Expression is not well formed" << endl;//print error message for not well formed expression
-		}
-		else {//if check returns true
-			//calculator will run
-			int len = input.length();//initializ lenth as the length of the input
-			for (int i = 1; i < len - 2; i++) {//increment index from 1 to third last index
-				if (input[i] == ')' && (input[i + 1] == '+' || input[i + 1] == '-' || input[i + 1] == '*' ||
-					input[i + 1] == '/') && input[i + 2] == '(') {//if character at index is '(', the following character is 
-					//an arithmetic operator and the third character after the index is ')'
-					input = "(" + input + ")";//add brackets to the outter most of the expression
-					i += 3;//increment index by three
-					break;//break out of the for loop
-				}
-
+		if (input != "@") {
+			input.erase(std::remove(input.begin(), input.end(), ' '), input.end());//remove the spaces in the expression
+			bool check = errorChecking(input);//get result of error checking
+			if (!check || check2 == "number") {//if check returns false
+				cout << "Expression is not well formed" << endl;//print error message for not well formed expression
 			}
-            Expression* e = new ArithmeticExpression(input);//create a derived ArithmeticExpression object e pointed to by the base class pointer to Expression
-            e->breakE();//call breakE on e
-			e->print();//call print on e
-			float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
-			std::cout << std::fixed <<std::setprecision(2);//set two decimal place
-			cout << '=' << output << endl;//print the result of evaluating the equation
-			Expression* c = new ArithmeticExpression(e);
-			c->increment();
-			c->print();
+			else {//if check returns true
+				//calculator will run
+				int len = input.length();//initializ lenth as the length of the input
+				for (int i = 1; i < len - 2; i++) {//increment index from 1 to third last index
+					if (input[i] == ')' && (input[i + 1] == '+' || input[i + 1] == '-' || input[i + 1] == '*' ||
+						input[i + 1] == '/') && input[i + 2] == '(') {//if character at index is '(', the following character is 
+						//an arithmetic operator and the third character after the index is ')'
+						input = "(" + input + ")";//add brackets to the outter most of the expression
+						i += 3;//increment index by three
+						break;//break out of the for loop
+					}
+
+				}
+				Expression* e = new ArithmeticExpression(input);//create a derived ArithmeticExpression object e pointed to by the base class pointer to Expression
+				e->breakE();//call breakE on e
+				e->print();//call print on e
+				float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
+				std::cout << std::fixed << std::setprecision(2);//set two decimal place
+				cout << '=' << output << endl;//print the result of evaluating the equation
+				c = new ArithmeticExpression(e);
+				delete e;//destruct e
+			}
+		}
+		else if (input == "@") {
+			
+			c->increment();//call increment
+			c->print();//call print
 			float temp = stof(c->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed << std::setprecision(2);//set two decimal place
 			cout << '=' << temp << endl;//print the result of evaluating the equation
-			delete c;
-			delete e;//destruct e
-        }
+			delete c;//destruct c
+			
+		}
 		
 	}
 	//int a;//create integer a

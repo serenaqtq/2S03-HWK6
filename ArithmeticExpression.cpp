@@ -114,20 +114,19 @@ ArithmeticExpression::~ArithmeticExpression() {//destrctor for the ArithmeticExp
 }
 
 void ArithmeticExpression::increment() {
-	if (index == -1 || index == 100) {
-		float temp = stof(input);
-		input = to_string(temp + 1);
+	if (index == -1 || index == 100) {//base case
+		int temp = stoi(input);//convert string to int
+		input = to_string(temp + 1);//increment by one
 	}
-	else {
-		left->increment();
-		right->increment();
+	else {//recursion
+		left->increment();//left recursion
+		right->increment();//right recursion
 	}
 }
 
 void ArithmeticExpression::print(){//print out the expression recursively
 	if (key == '%') {//if key is equal to '%', this means the character is either a number or a negative number
-		std::cout << std::fixed << std::setprecision(2);//set two decimal place
-		cout << convert(input);//print out 
+		cout << input;//print out 
 	}
 	else {//if key is equal to an operator 
 		cout << '(';//print a bracket
