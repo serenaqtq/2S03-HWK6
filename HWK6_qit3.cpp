@@ -8,6 +8,9 @@
  evaluation will be printed on the the screen as well as the expression itself 
  */
 
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 #include <iostream>//import iostream
 #include <string>//import string
 #include<iomanip>//import fix
@@ -125,6 +128,7 @@ bool errorChecking(string &temp) {//combines the error handling for expression a
 
 
 int main() {//main function
+	_CrtDumpMemoryLeaks();
 	Expression* c = NULL;//build a global variable
 	while (true) {//programs runs until user manually exits
 		string input;//create string input
@@ -159,7 +163,7 @@ int main() {//main function
 				e->print();//call print on e
 				float output = stof(e->evaluate());//call evaluate on e and convert the result to a float
 				std::cout << std::fixed << std::setprecision(2);//set two decimal place
-				cout << '=' << output << endl;//print the result of evaluating the equation
+				cout << " = " << output << endl;//print the result of evaluating the equation
 				c = new ArithmeticExpression(e);
 				delete e;//destruct e
 			}
@@ -170,14 +174,13 @@ int main() {//main function
 			c->print();//call print
 			float temp = stof(c->evaluate());//call evaluate on e and convert the result to a float
 			std::cout << std::fixed << std::setprecision(2);//set two decimal place
-			cout << '=' << temp << endl;//print the result of evaluating the equation
-			delete c;//destruct c
+			cout << " = " << temp << endl;//print the result of evaluating the equation
 			
 		}
 		
 	}
-	//int a;//create integer a
-	//cin >> a;//take in another user input
+	delete c;//destruct c
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
 
